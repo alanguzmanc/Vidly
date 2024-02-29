@@ -1,0 +1,39 @@
+﻿@model List<Vidly.Models.Customer>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+
+<div class="btn btn-primary">
+    @Html.ActionLink("New", "CustomerForm", "Customer")
+</div>
+
+@if(!Model.Any()){
+        <h2>We don't have any coustomers yet</h2>
+    }
+    else {
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Discount Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var custom in Model) 
+                {
+                <tr>
+                    <td>@Html.ActionLink(custom.Name, "CustomerForm", "Customer", new { Id = custom.Id })</td>
+                    
+                    <td>@custom.MembershipType.Name</td> 
+                </tr>
+                }
+            </tbody>
+
+        </table>
+        
+}
+
+
