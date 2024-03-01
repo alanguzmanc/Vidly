@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Dynamic;
+using Vidly.Dtos;
 using Vidly.ViewModels;
 
 namespace Vidly.Models
@@ -7,7 +9,15 @@ namespace Vidly.Models
     {
         protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
-            var customer = validationContext.ObjectInstance as CustomerFormViewModel;
+            dynamic customer;
+            if (validationContext.ObjectInstance is CustomerFormViewModel)            
+                customer = validationContext.ObjectInstance as CustomerFormViewModel;
+            else
+                customer = validationContext.ObjectInstance as CustomerDto;
+
+
+            
+
             if (customer.MembershipTypeId == 0 || customer.MembershipTypeId == 4)
             {
                 return ValidationResult.Success;
@@ -18,7 +28,7 @@ namespace Vidly.Models
                 return new ValidationResult("Birthdate is required");
             }
 
-            var age= DateTime.Now.Year - customer.Birthdate.Value.Year;
+            var age= DateTime.Now.Year - customer.Birthdate.Year;
 
             return (age >= 18) ? ValidationResult.Success :
                 new ValidationResult("Age must be over 18");
