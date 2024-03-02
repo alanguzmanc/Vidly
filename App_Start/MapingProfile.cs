@@ -9,11 +9,10 @@ namespace Vidly.App_Start
 
         public MapingProfile()
         {
-            CreateMap<Customer, CustomerDto>();
-            CreateMap<CustomerDto, Customer>();
-            CreateMap<Movie, MovieDto>();
-            CreateMap<MovieDto, MovieDto>();
-            CreateMap<List<Movie>,List<MovieDto>>();
+            CreateMap<Customer, CustomerDto>().ReverseMap();
+            CreateMap<CustomerDto, Customer>().ReverseMap();
+            CreateMap<Movie, MovieDto>().ReverseMap(); 
+            CreateMap<MovieDto, MovieDto>().ReverseMap(); 
         }
     }
 }
