@@ -27,19 +27,12 @@ namespace Vidly.Controllers.API
         //GET/api/customers
         public IEnumerable<CustomerDto> GetCustomers()
         {
-            return _context.Customers.ToList().Select(_mapper.Map<Customer,CustomerDto>);
+            return _context.Customers
+                .Include(c=> c.MembershipType)
+                .ToList()
+                .Select(_mapper.Map<Customer,CustomerDto>);
         }
-
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Customer>> GetCustomer(int id)
-        //{
-        //    var customer = await _context.Customers.SingleOrDefaultAsync(c => c.Id == id);
-
-        //    if (customer == null)
-        //        return NotFound();
-
-        //    return customer;
-        //}
+    
 
         [HttpGet("{id}")]
         public ActionResult<CustomerDto> GetCustomer(int id)

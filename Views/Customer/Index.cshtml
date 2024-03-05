@@ -15,7 +15,7 @@
     <thead>
         <tr>
             <th>Customer</th>
-            <th>Discount Rate</th>
+            <th>Membership Type</th>
             <th></th>
         </tr>
     </thead>
@@ -28,13 +28,13 @@
 
 
 @section scripts{
-    <link href="https://cdn.datatables.net/v/dt/dt-2.0.1/datatables.min.css" rel="stylesheet">
+@*     <link href="https://cdn.datatables.net/v/dt/dt-2.0.1/datatables.min.css" rel="stylesheet">
     <script src="https://cdn.datatables.net/v/dt/dt-2.0.1/datatables.min.js"></script>
-   
+    *@
 
     <script>
         $(document).ready(function () {
-            $("#customers").DataTable(
+           var table = $("#customers").DataTable(
             {
                 ajax:{
                     url: "/api/customers",
@@ -49,7 +49,7 @@
                         }
                     },
                     {
-                        data:"name"
+                        data: "membershipType.name"
                     },
                     {
                         data:"id",
@@ -70,7 +70,9 @@
                             url: "/api/customers/" + button.attr("data-customer-id"),
                             method: "DELETE",
                             success: function () {
-                                button.parents("tr").remove();
+
+                                table.row(button.parents("tr")).remove().draw();
+                                //button.parents("tr").remove();
                                 console.log("Success");
                             },
                             error: function () {
