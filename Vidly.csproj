@@ -8,16 +8,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="C:\Users\Al\.nuget\packages\datatables.net-bs5\2.0.1\contentFiles\any\any\wwwroot\css\dataTables.bootstrap5.css" />
+    <Content Remove="C:\Users\Al\.nuget\packages\datatables.net-bs5\2.0.1\contentFiles\any\any\wwwroot\css\dataTables.bootstrap5.min.css" />
+    <Content Remove="C:\Users\Al\.nuget\packages\datatables.net-bs5\2.0.1\contentFiles\any\any\wwwroot\js\dataTables.bootstrap5.js" />
+    <Content Remove="C:\Users\Al\.nuget\packages\datatables.net-bs5\2.0.1\contentFiles\any\any\wwwroot\js\dataTables.bootstrap5.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-slate.css" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="datatables.net-bs5" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.2">
       <PrivateAssets>all</PrivateAssets>
