@@ -23,14 +23,17 @@ namespace Vidly.Controllers.API
 
 
         [HttpGet]
-        public ActionResult<IEnumerable<MovieDto>> GetMovies()
+        public async Task<ActionResult<IEnumerable<MovieDto>>> GetMovies()
         {
-            var moviesDto =  _context.Movies.Select(_mapper.Map<Movie, MovieDto>);
+            var moviesDto= _context.Movies
+                .Include(m=> m.Genre)
+                .Select(_mapper.Map<Movie, MovieDto>);
+
             if (!moviesDto.Any())
                 return NotFound();
             
 
-            return moviesDto.ToList();
+            return await Task.FromResult(moviesDto.ToList());
 
         }
 

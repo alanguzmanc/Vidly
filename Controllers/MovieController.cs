@@ -17,11 +17,8 @@ namespace Vidly.Controllers
         }
 
         public IActionResult Index()
-        {
-            IEnumerable<Movie> movies = _context.Movies.Include(m => m.Genre).ToList();
-
-
-            return View(movies);
+        {         
+            return View();
         }
 
         public IActionResult Details(int Id)
