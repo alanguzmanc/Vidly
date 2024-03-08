@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using System.Diagnostics;
 using Vidly.Models;
 
@@ -13,6 +14,7 @@ namespace Vidly.Controllers
             _logger = logger;
         }
 
+        [OutputCache(Duration =50 )]
         public IActionResult Index()
         {
             return View();
